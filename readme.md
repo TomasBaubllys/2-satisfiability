@@ -15,10 +15,16 @@ make
 After compilation, execute the solver with:
 
 ```
-./2sat "(x1Vx2)&(x3V-x4)&(-x1V-x2)&(-x2Vx1)"
+./2sat <expression>
 ```
 
 The input should contain a CNF formula with two literals per clause. The assignments are printed in the order that the variables are given in the input.
+
+### Example
+
+```
+./2sat "(x1Vx2)&(x3V-x4)&(-x1V-x2)&(-x2Vx1)"
+```
 
 ## Cleaning
 
