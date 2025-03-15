@@ -42,6 +42,7 @@ int main(int argc, char *argv[]) {
         Sat2Solver solver(literal_map.size());
 
         for_each(disj.begin(), disj.end(), [&](pair<literal, literal> d){
+            // cout << d.first.first << "  " << d.first.second << " s " << d.second.first << " "  << d.second.second <<  endl;
             solver.add_disjunction(d.first.first, d.first.second, d.second.first, d.second.second);
         });
 

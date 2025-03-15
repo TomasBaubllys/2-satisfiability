@@ -6,8 +6,8 @@
 #include "not_implemented.h"
 #include "parser.h"
 
-#define POSITIVE true;
-#define NEGATIVE false;
+#define POSITIVE false;
+#define NEGATIVE true;
 
 class Sat2Solver {
 private:

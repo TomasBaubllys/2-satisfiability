@@ -77,7 +77,7 @@ bool Sat2Solver::solve() {
         if(this -> component_num[i] == this -> component_num[i + 1]) {
             return false;
         }
-        this -> assignment[i / 2] = this -> component_num[i] > component_num[i + 1];
+        this -> assignment[i / 2] = this -> component_num[i] > this -> component_num[i + 1];
     }
 
     return true;

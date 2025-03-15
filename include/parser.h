@@ -22,7 +22,7 @@
 #define ERR_LITERAL_TOO_SHORT "Invalid argument: Literal must contain atleast 2 characters"
 #define ERR_INVALID_LITERAL_NAMING "Invalid argument: Literal must start with 'x' followed by a number"
 
-using literal = std::pair<bool, int>;
+using literal = std::pair<int, bool>;
 
 // splits an expression to seperate disjunctions represented by pairs
 std::vector<std::pair<std::string, std::string>> split_to_disjunctions(std::string &expr);

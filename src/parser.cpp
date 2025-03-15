@@ -56,10 +56,10 @@ literal assign_num_and_sign(string literal, unordered_map<string, int> &map) {
         throw invalid_argument(ERR_LITERAL_TOO_SHORT);
     }
     
-    bool sign = literal.front() == '-'? false : true;
+    bool sign = literal.front() == '-'? true : false;
     int num = -1;
 
-    if(sign) { 
+    if(!sign) { 
         if(literal.front() != LITERAL_START_CHAR) {
             throw invalid_argument(ERR_LITERAL_START_CHAR);
         }
