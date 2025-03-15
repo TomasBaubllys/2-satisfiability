@@ -1,1 +1,52 @@
-ofuodsi
+Function Sat2Solver(n_vars):
+    Initialize n_vars as the number of variables
+    Initialize n_vertices as 2 * n_vars
+    Initialize adj_list as an empty list of size n_vertices
+    Initialize adj_list_r as an empty list of size n_vertices
+    Initialize order as an empty list
+    Initialize used as a list of size n_vertices, all set to False
+    Initialize component_num as a list of size n_vertices, all set to -1
+    Initialize assignment as a list of size n_vars, all set to False
+
+Function add_disjunction(a, sign_a, b, sign_b):
+    Convert a to a literal index with sign_a
+    Convert b to a literal index with sign_b
+    Set op_a as the negation of a (flip last bit)
+    Set op_b as the negation of b (flip last bit)
+
+    Add b to adj_list at index op_a
+    Add a to adj_list at index op_b
+    Add op_b to adj_list_r at index a
+    Add op_a to adj_list_r at index b
+
+Function get_assignment():
+    Return the assignment list
+
+Function dfs1(v):
+    Mark v as visited in used
+    For each neighbor u of v in adj_list:
+        If u is not visited, call dfs1(u)
+    Push v to the order list
+
+Function dfs2(v, m):
+    Set component_num[v] to m
+    For each neighbor u of v in adj_list_r:
+        If component_num[u] is -1, call dfs2(u, m)
+
+Function solve():
+    Clear the order list
+    Reset the used list to False
+    For each vertex i from 0 to n_vertices - 1:
+        If vertex i is not visited, call dfs1(i)
+
+    Reset component_num to -1 for all vertices
+    For each vertex i in reverse order of the order list:
+        If component_num[vertex] is -1, call dfs2(vertex, m) and increment m
+
+    Reset the assignment list to False for all variables
+    For each variable i (incrementing by 2):
+        If component_num[i] is the same as component_num[i + 1], return False (unsatisfiable)
+        Set assignment[i / 2] to True if component_num[i] is greater than component_num[i + 1]
+
+    Return True (satisfiable)
+
