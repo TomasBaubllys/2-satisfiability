@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
         cout << "The given CNF is " << (is_solved? GREEN "satisfiable" : RED "unsatisfiable") << RESET << '\n';
 
         if(is_solved) {
-            cout << "Assignments in order that they appeared in CNF:\n";
+            cout << "Assignments in order that they appear in CNF:\n";
 
             vector<bool> assign = solver.get_assignment();
             for(size_t i = 0; i < assign.size(); ++i) {
