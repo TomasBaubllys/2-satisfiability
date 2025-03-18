@@ -48,12 +48,14 @@ int main(int argc, char *argv[]) {
 
         bool is_solved = solver.solve();
 
-        cout << (is_solved? GREEN "solved" : RED "unsolved") << RESET << '\n';
+        cout << "The given CNF is " << (is_solved? GREEN "satisfiable" : RED "unsatisfiable") << RESET << '\n';
 
         if(is_solved) {
+            cout << "Assignments in order that they appeared in CNF:\n";
+
             vector<bool> assign = solver.get_assignment();
             for(size_t i = 0; i < assign.size(); ++i) {
-                cout << i << ": " << (assign[i]? GREEN "true" : RED "false") << RESET << '\n';
+                cout << (assign[i]? GREEN "true" : RED "false") << RESET << '\n';
             }
         }
 
