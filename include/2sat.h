@@ -21,9 +21,9 @@ private:
     std::vector<std::vector<int>> adj_list;
     std::vector<std::vector<int>> adj_list_r;
 
-    std::vector<int> component_num;
     std::vector<int> order;
     std::vector<bool> used;
+    std::vector<int> component_num;
 
     // variable assignment list
     std::vector<bool> assignment;
