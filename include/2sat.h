@@ -9,6 +9,9 @@
 #define POSITIVE false;
 #define NEGATIVE true;
 
+// #define PRINT_SCCS
+// #define PRINT_TOPO_SORTED
+
 class Sat2Solver {
 private:
     // number of variables

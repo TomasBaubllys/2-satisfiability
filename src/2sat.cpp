@@ -58,12 +58,22 @@ bool Sat2Solver::solve() {
     this -> order.clear();
     this -> used.assign(this -> n_vertices, false);
     
+    // dfs1 to topologically sort the graph
     for(int i = 0; i < this -> n_vertices; ++i) {
         if(!used[i]) {
             dfs1(i);
         }
     }
 
+    #ifdef PRINT_TOPO_SORTED 
+        for(int i = n_vertices - 1; i >= 0; --i) {
+            cout << this -> order[i] << " ";
+        }
+
+        cout << '\n';
+    #endif // PRINT_TOPO_SORTED
+    
+    // dfs2 to find all the strongly connected components
     this -> component_num.assign(this -> n_vertices, -1);
     for(int i = 0, j = 0; i < this -> n_vertices; ++i) {
         int v = this -> order[this -> n_vertices - i - 1];
@@ -71,6 +81,12 @@ bool Sat2Solver::solve() {
             dfs2(v, j++);
         }
     }
+
+    #ifdef PRINT_SCCS
+        for(int i = 0; i < n_vertices; ++i) {
+            cout << "Vertex : " << i << " Component number : " << component_num[i] << '\n';
+        }
+    #endif // PRINT_SCCS
 
     this -> assignment.assign(this -> n_vars, false);
     for(int i = 0; i < n_vertices; i += 2) {
